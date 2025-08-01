@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Therapist Landing Section</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- navbar start -->
+    <section class="navbar">
+        <div class="container">
+            <div class="logo">Kognos</div>
+
+            <!-- Hamburger Icon for mobile -->
+            <div class="hamburger" onclick="toggleDrawer()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <!-- Desktop Navigation -->
+            <nav class="nav-links">
+                <a href="#hero-section">Home</a>
+                <a href="#partners-section">About</a>
+                <a href="#services-section">Services</a>
+                <a href="#therapy-section">Therapist</a>
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="nav-actions">
+                <div class="action">
+                    <i class="fas fa-headphones-alt"></i>
+                    <span>Get in Touch</span>
+                </div>
+                <div class="action">
+                    <i class="fas fa-envelope"></i>
+                    <span>Message</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Drawer Menu -->
+        <div class="drawer" id="drawer">
+            <a href="#hero-section">Home</a>
+
+            <a href="#partners-section">About</a>
+            <a href="#services-section">Services</a>
+            <a href="#therapy-section">Therapist</a>
+            <a href="#contact-section">Get in Touch</a>
+            <a href="#contact-form">Message</a>
+        </div>
+    </section>
+
+    <!-- hero-section start -->
+    <section id="hero-section">
+        <div class="hero-content">
+            <div class="text-area">
+                <h1>Welcome to <br><span>Kognos</span></h1>
+                <p class="description">Your Mental Wellness Community</p>
+                <p class="quote">Your trusted space for mental wellness and personal growth.<br> Here, you're never alone—we listen, support, and uplift.<br> Connect with a compassionate community that cares.<br> Together, let’s build a healthier, stronger mind.<br>
+
+                </p>
+
+                <div class="button-group">
+                    <button class="cta-button" onclick="openPopup()">Join Now</button>
+                    <button class="learn-more-btn">Learn More</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <!-- Registration Popup -->
+        <div id="registration-popup" class="popup hidden">
+            <div class="popup-content">
+                <span class="close-btn" onclick="closePopup()">&times;</span>
+                <h2>Register to Join Kognos</h2>
+                <form class="popup-form">
+                    <input type="text" placeholder="Full Name" required />
+                    <input type="email" placeholder="Email Address" required />
+                    <input type="password" placeholder="Password" required />
+                    <button type="submit">Register</button><br>
+                    <button style="background-color: rgb(203, 222, 234);">login</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- hero-section end -->
+    <!-- therapist-section start -->
+    <!-- <section id="therapy-section">
+        <div class="therapy-content">
+            <div class="text-content">
+                <h2>
+                    <span class="highlight">We Help You</span> Prioritize Your
+                    <span class="highlight">Mental Health</span>
+                </h2>
+                <p>
+                    Kognos connects you with thousands of licensed mental health professionals, offering a wide range of therapy and wellness services. Use our smart filters to easily find the right therapist who understands your unique needs, goals, and preferences.
+                </p>
+                <button class="cta-btn" onclick="toggleSearch()">Find a Therapist</button>
+
+                <div id="advanced-search" class="hidden">
+                    <h3>Advanced Search</h3>
+                    <label>
+          Name of Therapists
+          <input type="name" placeholder="Name of Therapist">
+        </label>
+                    <label>
+          Your Location (KM):
+          <input type="number" placeholder="Enter distance in KM">
+        </label>
+                    <label>
+          Nearby Therapist:
+          <input type="text" placeholder="Enter city or postal code">
+        </label>
+                    <button class="search-btn">Search Therapist</button>
+                </div>
+            </div>
+
+            <div class="image-wrapper">
+                <div class="circle-frame">
+                    <img src="https://img.freepik.com/premium-photo/girl-hugging-heart-mental-health-day-illustration-mental-wellbeing-depression-generative-ai_982429-99.jpg?w=1480" alt="Therapy Session" />
+
+                    <div class="abstract-shapes"></div>
+                </div>
+            </div>
+        </div>
+        
+    </section> -->
+    <section id="therapy-section">
+        <div class="therapy-content">
+            <div class="text-content">
+                <h2>
+                    <span class="highlight">We Help You</span> Prioritize Your
+                    <span class="highlight">Mental Health</span>
+                </h2>
+                <p>
+                    Kognos connects you with thousands of licensed mental health professionals, offering a wide range of therapy and wellness services. Use our smart filters to easily find the right therapist who understands your unique needs, goals, and preferences.
+                </p>
+
+                <button class="cta-btn" onclick="toggleSearch()">Find a Therapist</button>
+
+                <div id="advanced-search" class="hidden">
+                    <h3>Find Exactly What you are looking for</h3>
+                    <label>
+          Name of Therapists:
+          <input id="search-name" type="text" placeholder="Name of Therapist">
+        </label>
+                    <label>
+          Your Location (KM):
+          <input id="search-distance" type="number" placeholder="Enter distance in KM">
+        </label>
+                    <label>
+          Nearby Therapist:
+          <input id="search-location" type="text" placeholder="Enter city or postal code">
+        </label>
+                    <button class="search-btn" onclick="searchTherapists()">Search Therapist</button>
+
+                    <!-- Results will appear here -->
+                    <div id="search-results" style="margin-top: 20px;"></div>
+                </div>
+            </div>
+
+            <div class="image-wrapper">
+                <div class="circle-frame">
+                    <img src="https://img.freepik.com/premium-photo/girl-hugging-heart-mental-health-day-illustration-mental-wellbeing-depression-generative-ai_982429-99.jpg?w=1480" alt="Therapy Session" />
+                    <div class="abstract-shapes"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- therapist-section end -->
+    <!-- services-section start -->
+    <section id="services-section">
+        <div class="section-header">
+            <span class="section-tag">Services</span>
+            <h2>Why Walk Alone?</h2>
+            <p>
+                At Praan, we offer you a mental health support system <br>that can lighten your burden and bring comfort in your journey.
+                <br><br>
+                <strong>Trust us to help you</strong>
+            </p>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 1 -->
+            <div class="service-card purple">
+                <div class="card-content">
+                    <img src="https://thumbs.dreamstime.com/b/talking-cute-robot-artificial-intelligence-concept-chatbot-idea-272381718.jpg" alt="AI Chatbot Image" />
+                    <h3>AI Chat-bot for Emotional Support</h3>
+                    <p>Your always-available AI companion for mental wellness support.</p>
+
+                    <button class="card-btn">Learn More</button>
+                </div>
+
+            </div>
+
+            <!-- Card 2 -->
+            <div class="service-card white">
+                <div class="card-content">
+                    <img src="https://images.squarespace-cdn.com/content/v1/6010d2c16360d66d1e3982fa/4b6cae45-84ac-488c-8eac-12cbda25dc8a/Heading.jpg" alt="Wellness Routine Generator" />
+                    <h3>Personalized Wellness Routine Generator</h3>
+                    <p>Get a personalized wellness plan for your mood and routine.</p>
+                    <button class="card-btn">Learn More</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="card-container">
+            <!-- Card 3 -->
+            <div class="service-card white">
+                <div class="card-content">
+                    <img src="https://tse3.mm.bing.net/th/id/OIP.ZjQ0G21ddaGkRnAMahocpQHaEJ?pid=Api&P=0&h=180" alt="Daily Quote" />
+                    <h3>Daily Mental Health Quote</h3>
+                    <p>Get daily affirmations, coping tips, and mindfulness cues to stay inspired.</p>
+                    <button class="card-btn">Learn More</button>
+                </div>
+
+            </div>
+
+            <!-- Card 4 -->
+            <div class="service-card purple">
+                <div class="card-content">
+                    <img src="https://tse1.mm.bing.net/th/id/OIP.U5UNHOMPOmk2T0BbWk8FsgHaGN?pid=Api&P=0&h=180" alt="Therapy Booking" />
+                    <h3>Therapy Booking Platform</h3>
+                    <p>Book sessions with certified therapists—your language, your schedule.</p>
+                    <button class="card-btn">Learn More</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- services-section end -->
+    <!-- testimonial-section start -->
+    <section class="testimonial-section">
+        <div class="testimonial-left">
+            <p class="subheading">TESTIMONIALS</p>
+            <h2>What Our Clients<br>Are Saying</h2>
+            <p class="description">
+                Positive experiences from users who have benefited from therapy or wellness programs.
+            </p>
+            <div class="slider-controls">
+                <button class="slide-btn prev">&larr;</button>
+                <button class="slide-btn next">&rarr;</button>
+            </div>
+        </div>
+
+        <div class="testimonial-slider">
+            <div class="testimonial-track">
+                <div class="testimonial-card purple">
+                    <p>
+                        "Kognos mental wellness made it so easy to find the right therapist for me. The sessions have truly transformed my mindset, and I feel more in control of my emotions than ever before."
+                    </p>
+                    <span>— Anna R., 32</span>
+                </div>
+                <div class="testimonial-card gray">
+                    <p>
+                        "I was struggling with stress and anxiety, but the mindfulness program at Kognos has helped me regain balance. I finally feel like I'm prioritizing my well-being."
+                    </p>
+                    <span>— Mark S., 41</span>
+                </div>
+                <div class="testimonial-card blue">
+                    <p>
+                        "Through Kognos, I discovered tools and techniques that made therapy approachable and effective."
+                    </p>
+                    <span>— Priya M., 27</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- testimonial-section end -->
+    <!-- partners-section start -->
+    <section id="partners-section">
+        <div class="partners-container">
+            <span class="partners-label">Our Partners</span>
+            <div class="logos-slider">
+                <div class="logos-track">
+                    <img src="wealthsimple1.png" alt="Wealthsimple" />
+                    <img src="notions.png" alt="Notion" />
+                    <img src="mediums.png" alt="Medium" />
+                    <img src="braze.jpg" alt="Braze" />
+                    <img src="sons.png" alt="Sonos" />
+                    <!-- Duplicate for infinite loop effect -->
+                    <img src="sons.png" alt="Wealthsimple" />
+                    <img src="notions.png" alt="Notion" />
+                    <img src="mediums.png" alt="Medium" />
+                    <img src="braze.jpg" alt="Braze" />
+                    <img src="sons.png" alt="Sonos" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- partners-section end -->
+    <!-- Resources Section Start -->
+    <section id="resources-section">
+        <div class="resources-container">
+            <div class="resources-header">
+                <p class="resources-tag">Discover & Learn</p>
+                <h2 class="resources-title">Resources for <br><span>Your Well-being</span></h2>
+                <p class="resources-subtitle">
+                    Explore expert insights, self-care guides,<br /> and tools to support your mental health.
+                </p>
+            </div>
+
+            <div class="resources-cards">
+                <div class="resource-card">
+                    <h3>Articles & Guides</h3>
+                    <p>Practical tips on stress management, mindfulness, and emotional resilience.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Meditation & Relaxation</h3>
+                    <p>Audio sessions for guided relaxation and mindfulness practices.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+
+                <div class="resource-card">
+                    <h3>Webinars & Workshops</h3>
+                    <p>Live and recorded sessions with licensed mental health professionals.</p>
+                    <a href="#" class="explore-btn">Explore</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Resources Section End -->
+
+    <!-- commit-section start -->
+    <section class="community-section">
+        <div class="community-container">
+            <div class="community-text">
+                <p class="community-tag">COMMUNITY</p>
+                <h2>You're Not Alone<br>on This Journey</h2>
+                <p class="community-description">
+                    Connect with others, share experiences,<br> and find encouragement in a safe,<br> supportive space.
+                </p>
+                <button class="community-btn">Join The Community</button>
+            </div>
+            <div class="community-image">
+                <img src="istok.jpg" alt="Community Support Illustration" />
+            </div>
+        </div>
+    </section>
+    <section class="faq-section">
+        <div class="faq-text">
+            <p class="small-heading">NEED HELP?</p>
+            <h2>Frequently<br>Asked Questions</h2>
+            <p class="description">
+                Find answers to common questions about our services, therapy, and mental well-being.
+            </p>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        How do I book a therapy session?
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        You can book a therapy session by selecting a therapist on our platform and choosing a suitable time slot.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Are online sessions available?
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Yes, we offer both online and in-person sessions depending on your preference and availability.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        What’s the difference between therapy and coaching?
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Therapy focuses on mental health and emotional healing, while coaching helps you set and achieve personal goals.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Do I need a subscription to access services?
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        No, you can book individual sessions without a subscription. Subscription plans offer discounts and flexibility.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Can I switch therapists if I don’t feel the right connection?
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Absolutely. We understand the importance of the right match and make it easy for you to switch therapists anytime.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        Is my information and session history kept confidential?
+                        <i class="fas fa-plus"></i>
+                    </div>
+                    <div class="accordion-content">
+                        Yes, your privacy is our priority. All session records are securely stored and kept confidential.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-image">
+            <img src="fre.jpg" alt="FAQ Illustration" />
+        </div>
+    </section>
+    <!-- fq-end -->
+    <!-- contact start -->
+    <section id="contact-section">
+        <div class="contact-header">
+            <small>Get In Touch</small>
+            <h2>We’re Here to Support You</h2>
+            <p>Whether you have questions, need help getting started, or want to learn more — reach out anytime.</p>
+        </div>
+
+        <div class="contact-container">
+            <div class="contact-details">
+                <h3>Contact Details:</h3>
+                <p><strong>Email:</strong> <a href="mailto:support@kognos.com">support@kognos.com</a></p>
+                <p><strong>Phone:</strong> —</p>
+                <p><strong>Address:</strong> —</p>
+
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+
+                <p class="response-time">We typically respond within 12 hours.</p>
+            </div>
+
+            <form id="contact-form" class="contact-form" onsubmit="handleSubmit(event)">
+                <h3>Send Us a Message</h3>
+
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required placeholder="Email">
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" required placeholder="Message"></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+    <!-- contact end -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">Kognos</div>
+            <div class="footer-links">
+                <ul>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Therapists</a></li>
+                    <li><a href="#">Resources</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                    <li><a href="#">YouTube</a></li>
+                    <li><a href="#">LinkedIn</a></li>
+                </ul>
+                <ul>
+                    <li><a href="#">Terms Of Use</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© [2025] Soni. All Rights Reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js">
+    </script>
+
+</body>
+
+</html>
